@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
     getAllSpots,
     getParkedCars,
+    getStats,
     parkCar,
     exitCar as exitCarService
 } from "../services/parking.service";
@@ -34,6 +35,25 @@ export const getCars = async (
         const cars = await getParkedCars();
 
         res.json(cars);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: "Database error"
+        });
+
+    }
+};
+
+export const stats = async (
+    req: Request,
+    res: Response
+) => {
+    try {
+
+        const data = await getStats();
+
+        res.json(data);
 
     } catch (error) {
 

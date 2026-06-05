@@ -17,6 +17,23 @@ export const getParkedCars = async () => {
     return rows;
 };
 
+export const getStats = async () => {
+
+    const [allSpots]: any = await pool.query(
+        "SELECT COUNT(*) as total FROM parking_spots"
+    );
+
+    const [occupiedSpots]: any = await pool.query(
+        "SELECT COUNT(*) as occupied FROM parking_spots WHERE is_occupied = 1"
+    );
+
+    return {
+        total: allSpots[0].total,
+        occupied: occupiedSpots[0].occupied,
+        free: allSpots[0].total - occupiedSpots[0].occupied
+    };
+};
+
 export const parkCar = async (carNum: string) => {
 
     const [spots]: any = await pool.query(
