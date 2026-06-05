@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.controls input {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.controls button {
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#spots {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.spot {
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+}
+
+.free {
+    background-color: lightgreen;
+}
+
+.occupied {
+    background-color: lightcoral;
+}
+
+#cars {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+#cars h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#cars p {
+    margin: 4px 0;
+}

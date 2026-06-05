@@ -2,7 +2,18 @@ import pool from "../config/db";
 
 export const getAllSpots = async () => {
     const [rows] = await pool.query(
-        "SELECT * FROM parking_spots"
+        `
+        SELECT
+            parking_spots.id,
+            parking_spots.spot_number,
+            parking_spots.is_occupied,
+            cars.car_num
+        FROM parking_spots
+        LEFT JOIN cars
+            ON parking_spots.id = cars.parking_spot
+            AND cars.exit_time IS NULL
+        ORDER BY parking_spots.spot_number
+        `
     );
 
     return rows;
