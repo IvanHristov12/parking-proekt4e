@@ -1,24 +1,16 @@
 import express from "express";
-import pool from "./config/db";
+import parkingRoutes from "./routes/parking.routes";
 
 const app = express();
 const PORT = 3000;
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("Parking API working");
 });
 
-app.get("/spots", async (req, res) => {
-    try {
-        const [rows] = await pool.query("SELECT * FROM parking_spots");
-        res.json(rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            message: "Database error"
-        });
-    }
-});
+app.use("/", parkingRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
