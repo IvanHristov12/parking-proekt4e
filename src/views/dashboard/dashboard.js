@@ -5,7 +5,7 @@ async function loadDashboard() {
     const stats = await statsResponse.json();
 
     document.getElementById("stats").innerHTML = `
-        <h2>Statistics</h2>
+        <h2>Info</h2>
         <p>Total: ${stats.total}</p>
         <p>Occupied: ${stats.occupied}</p>
         <p>Free: ${stats.free}</p>
